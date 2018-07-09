@@ -33,6 +33,14 @@ istio : tiller
 	helm upgrade --install istio \
 		./deploy/istio/install/kubernetes/helm/istio \
 		--namespace istio-system
+jenkins : tiller nginx-ingress-ip
+	helm dependency build ./deploy/jenkins/skookum-jenkins
+	helm upgrade --install jenkins \
+		./deploy/jenkins/skookum-jenkins \
+		--namespace jenkins \
+		--values ./deploy/jenkins/overrides-github-auth.yaml \
+		--set jenkins.Master.GithubAuth.ClientID=$$GITHUB_AUTH_CLIENT_ID \
+		--set jenkins.Master.GithubAuth.ClientSecret=$$GITHUB_AUTH_CLIENT_SECRET
 manifests :
 	kustomize build ./deploy > $(MANIFEST_OUTPUT_YAML)
 	kubectl apply -f $(MANIFEST_OUTPUT_YAML)

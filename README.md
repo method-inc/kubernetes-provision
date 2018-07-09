@@ -12,6 +12,11 @@ In addition, you will need access to a running kubernetes cluster.
 <!-- TODO: automate cluster provisioning -->
 
 ## Usage
+```bash
+git clone https://github.com/Skookum/kubernetes-provision.git --recurse-submodules
+cd kubernetes-provision
+```
+
 ### Configure a cluster
 ```bash
 make cluster
@@ -34,4 +39,14 @@ make ingress-example
 ### Return cluster to original state
 ```bash
 make clean
+```
+
+### Deploy Jenkins
+You will need a valid Github application client ID and secret to be used with the [Github OAuth Plugin](https://wiki.jenkins.io/display/JENKINS/GitHub+OAuth+Plugin).
+
+Ask @markflowers if you need credentials for the Github app that has been configured for jenkins.k8s.skookum.com.
+```bash
+export GITHUB_AUTH_CLIENT_ID=foo
+export GITHUB_AUTH_CLIENT_SECRET=bar
+make jenkins
 ```

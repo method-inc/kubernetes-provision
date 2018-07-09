@@ -1,3 +1,6 @@
 [submodule "deploy/istio"]
 	path = deploy/istio
 	url = https://github.com/istio/istio
+[submodule "deploy/jenkins"]
+	path = deploy/jenkins
+	url = https://github.com/skookum/jenkins-k8s
