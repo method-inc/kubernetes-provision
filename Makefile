@@ -29,6 +29,10 @@ nginx-ingress-ip :
 	@hack/print-nginx-ingress-ip.sh $(SYSTEM_NAMESPACE)
 ingress-example : nginx-ingress-ip
 	kubectl apply -f ./examples/nginx-ingress
+istio : tiller
+	helm upgrade --install istio \
+		./deploy/istio/install/kubernetes/helm/istio \
+		--namespace istio-system
 manifests :
 	kustomize build ./deploy > $(MANIFEST_OUTPUT_YAML)
 	kubectl apply -f $(MANIFEST_OUTPUT_YAML)
