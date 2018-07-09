@@ -9,4 +9,4 @@ roleRef:
 subjects:
 - kind: ServiceAccount
   name: tiller
-  namespace: $(SERVICEACCOUNT_NAMESPACE)
+  namespace: kube-system
