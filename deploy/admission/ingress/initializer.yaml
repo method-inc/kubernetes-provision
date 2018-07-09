@@ -1,0 +1,14 @@
+# # metadata.initializers.pending[0].name="ingress.k8s.skookum.com"
+# apiVersion: admissionregistration.k8s.io/v1alpha1
+# kind: InitializerConfiguration
+# metadata:
+#   name: nginx-ingress
+# initializers:
+# - name: ingress.k8s.skookum.com
+#   rules:
+#   - apiGroups:
+#     - extensions
+#     apiVersions:
+#     - "*"
+#     resources:
+#     - ingresses

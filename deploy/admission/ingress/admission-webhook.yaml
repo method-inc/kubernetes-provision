@@ -1,0 +1,23 @@
+apiVersion: admissionregistration.k8s.io/v1beta1
+kind: MutatingWebhookConfiguration
+metadata:
+  name: nginx-ingress
+webhooks:
+- name: ingress.k8s.skookum.com
+  failurePolicy: Fail
+  rules:
+  - apiGroups:
+    - extensions
+    apiVersions:
+    - "*"
+    operations:
+    # - CREATE
+    - "*"
+    resources:
+    - ingresses
+  clientConfig:
+    url: https://us-east1-kubernetes-playground-191921.cloudfunctions.net/nginx-ingress-mutating-admission-controller
+    # service:
+    #   namespace: kube-system
+    #   name: nginx-ingress-mutating-admission-controller
+    # caBundle: foo

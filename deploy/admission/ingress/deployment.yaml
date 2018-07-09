@@ -1,0 +1,20 @@
+# apiVersion: extensions/v1beta1
+# kind: Deployment
+# metadata:
+#   name: nginx-ingress-mutating-admission-controller
+#   namespace: kube-system
+# spec:
+#   replicas: 1
+#   selector:
+#     matchLabels:
+#       app: nginx-ingress-mutating-admission-controller
+#   template:
+#     metadata:
+#       labels:
+#         app: nginx-ingress-mutating-admission-controller
+#     spec:
+#       containers:
+#       - name: controller
+#         image: gcr.io/google_containers/echoserver:1.8
+#         ports:
+#         - containerPort: 8080
