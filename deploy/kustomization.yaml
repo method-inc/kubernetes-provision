@@ -1,0 +1,13 @@
+bases:
+  - cert-manager
+  - tiller
+
+# Annotations (non-identifying metadata)
+# to add to all resources.  Like labels,
+# these are key value pairs.
+commonAnnotations:
+  skookum.com/source-repository: https://github.com/Skookum/kubernetes-provision
+
+# Labels to add to all resources and selectors.
+commonLabels:
+  heritage: kustomize
